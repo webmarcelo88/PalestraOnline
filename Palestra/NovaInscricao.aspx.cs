@@ -1,6 +1,7 @@
 ﻿using Palestra.Business;
 using Palestra.Model;
 using System;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.IO;
 using System.Web.UI;
@@ -32,6 +33,10 @@ namespace Palestra
 
                     lblNumeroInscricao.Text = $"    Nº INSCRIÇÃO: {numeroInscricao}";
                 }
+            }
+            catch (SqlTypeException)
+            {
+                ClientScript.RegisterClientScriptBlock(typeof(Page), "alert", $"<script>alert('Data de Nascimento inválida!');</script>");
             }
             catch (Exception ex)
             {
@@ -71,7 +76,7 @@ namespace Palestra
                 !fileUploadCPF.HasFile ||
                 !fileUploadContrato.HasFile)
             {
-                throw new BusinessException("Todos os arquivos devem ser informados.");
+                throw new BusinessException("Todos os arquivos devem ser informados!");
             }
 
             // Verificar extensão dos arquivos
@@ -79,7 +84,7 @@ namespace Palestra
                 !ExtensaoArquivoValida(fileUploadCPF.FileName) ||
                 !ExtensaoArquivoValida(fileUploadContrato.FileName))
             {
-                throw new BusinessException("Deve ser informado um arquivo no formato PDF.");
+                throw new BusinessException("Todos os arquivos devem estar no formato PDF!");
             }
         }
 

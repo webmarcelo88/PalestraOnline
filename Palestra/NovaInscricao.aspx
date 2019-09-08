@@ -53,7 +53,11 @@
             </tr>
             <tr>
                 <td></td>
-                <td><br /><br /><asp:Button ID="btnEnviar" runat="server" Text="Enviar" OnClick="btnEnviar_Click" /><asp:Label ID="lblNumeroInscricao" runat="server" Text="" ForeColor="Green" Font-Size="Large"></asp:Label></td>
+                <td>
+                    <br />
+                    <br />
+                    <asp:Button ID="btnEnviar" runat="server" Text="Enviar" OnClick="btnEnviar_Click" />
+                    <asp:Label ID="lblNumeroInscricao" runat="server" Text="" ForeColor="Green" Font-Size="Large"></asp:Label></td>
             </tr>            
         </table>
     </div>
